@@ -14,7 +14,7 @@ app.get('/contactList',function(req,res){
 	console.log("I recieved a get requent");
 	//find all records in contactList
 	db.contactList.find(function(err,docs){
-		console.log("docs");
+		console.log(docs);
 		res.json(docs);
 	});
 
@@ -27,6 +27,17 @@ app.post('/contactList',function(req,res){
 		res.json(doc);
 	});
 });
+
+//Handel DELETE request for a contact
+app.delete('/contactList/:id',function(req,res){
+	var id = req.params.id;
+	console.log(id);
+	db.contactList.remove({_id: mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
+
+
 var server = app.listen(3000,function(){
 	console.log("App listening at port 3000");
 });
