@@ -44,7 +44,12 @@ myApp.controller('AppCtrl', ['$scope','$http', function($scope,$http){
 		$http.put('/contactList/' + $scope.contact._id, $scope.contact)
 			 .success(function(response){
 			 refresh();
-			 });
+		 });
 	};
+
+	$scope.deselect = function(){
+		$scope.contact = "";
+	};
+
 
 }]);
