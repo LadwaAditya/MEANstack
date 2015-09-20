@@ -9,7 +9,6 @@
   "author": "Aditya Ladwa <ladwa.aditya@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.0-beta.0",
     "express": "^4.13.3"
   }
 }
