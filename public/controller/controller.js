@@ -5,7 +5,7 @@ myApp.controller('AppCtrl', ['$scope','$http', function($scope,$http){
 
 	var refresh = function(){
 
-		$http.get('/contactList')
+		$http.get('/contactList/')
 			 .success(function(response){
 			 console.log("I got the response");
 			 $scope.contactList =response;
@@ -26,9 +26,24 @@ myApp.controller('AppCtrl', ['$scope','$http', function($scope,$http){
 
 	$scope.remove = function(id){
 		console.log(id);
-		$http.delete('contactList/'+id)
+		$http.delete('/contactList/'+id)
 			 .success(function(response){
-			 	refresh();
+			 refresh();
+		});
+	};
+
+	$scope.edit = function(id){
+		console.log(id);
+		$http.get('/contactList/' + id).success(function(response){
+			$scope.contact =response;
+		});
+	};
+
+	$scope.update = function(){
+		console.log($scope.contact._id);
+		$http.put('/contactList/' + $scope.contact._id, $scope.contact)
+			 .success(function(response){
+			 refresh();
 			 });
 	};
 
