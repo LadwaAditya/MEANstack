@@ -9,7 +9,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 
-//Handel get request for contact list
+//Handel GET request for contact list
 app.get('/contactList',function(req,res){
 	console.log("I recieved a get requent");
 	//find all records in contactList
@@ -20,6 +20,7 @@ app.get('/contactList',function(req,res){
 
 });
 
+//Handel the new contacts sent via POST
 app.post('/contactList',function(req,res){
 	console.log(req.body);
 	db.contactList.insert(req.body,function(err,doc){
