@@ -37,7 +37,7 @@ app.delete('/contactList/:id',function(req,res){
 	});
 });
 
-
+//Handel GET for an individual contact with an Id
 app.get('/contactList/:id',function(req,res){
 	 var id = req.params.id;
 	 db.contactList.findOne({_id :mongojs.ObjectId(id)},function(err,doc){
@@ -45,6 +45,7 @@ app.get('/contactList/:id',function(req,res){
 	 });
 });
 
+//Handel PUT to modify a perticular contact
 app.put('/contactList/:id',function(req,res){
 	var id = req.params.id;
 	console.log(req.body.name);
